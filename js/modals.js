@@ -665,6 +665,42 @@ window.abrirModalConselho = async function(index) {
     };
   }
 
+  // ✅ NOVO: carrega notas do bimestre atual na coluna lateral
+  const bimestre = conselhoAtual?.bimestre || "-";
+  const bimestreEl = document.getElementById("modalNotasLateral_bimestre");
+  const corpoEl = document.getElementById("modalNotasLateral_corpo");
+  
+  if (bimestreEl) bimestreEl.textContent = `${bimestre}º Bimestre`;
+  if (corpoEl) corpoEl.innerHTML = `<p class="text-muted small">Carregando...</p>`;
+  
+  const registros = window.cacheNotasPorAluno?.[alunoId] || [];
+  const mapPorDisc = new Map();
+  registros.forEach(r => mapPorDisc.set(r.disciplina_id, r));
+  
+  if (corpoEl) {
+    if ((window.cacheDisciplinas || []).length === 0) {
+      corpoEl.innerHTML = `<p class="text-muted small">Nenhuma disciplina encontrada.</p>`;
+    } else {
+      corpoEl.innerHTML = (window.cacheDisciplinas || []).map(d => {
+        const r = mapPorDisc.get(d.id);
+        const media = r?.media ?? null;
+        const faltas = r?.faltas ?? "-";
+        const semNota = media === null;
+        const notaBaixa = !semNota && parseFloat(media) < 5;
+  
+        return `
+          <div class="d-flex justify-content-between align-items-center py-1 border-bottom">
+            <span class="small" style="max-width:140px; word-break:break-word;">${d.nome}</span>
+            <span class="small fw-semibold ms-2 ${notaBaixa ? "text-danger" : semNota ? "text-muted" : "text-dark"}">
+              ${semNota ? "—" : media}
+              <span class="text-muted fw-normal">/ ${faltas}</span>
+            </span>
+          </div>
+        `;
+      }).join("");
+    }
+  }
+
   const dificuldadeMarcada = linha.querySelector(".dificuldadeChk")?.checked || false;
   const dificuldadeTexto = linha.querySelector(".dificuldadeTxt")?.value || "";
 
