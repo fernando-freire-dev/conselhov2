@@ -654,6 +654,15 @@ window.abrirModalConselho = async function(index) {
   const fotoEl = document.getElementById("modalAlunoFoto");
   if (fotoEl) {
     fotoEl.src = `https://res.cloudinary.com/dqc3eto6e/image/upload/${alunoId}.jpg`;
+    fotoEl.style.cursor = "zoom-in";
+    fotoEl.onclick = function() {
+      const viewer = document.getElementById("visualizadorFotoConselho");
+      const imgAmpliada = document.getElementById("fotoAmpliadaConselho");
+      if (viewer && imgAmpliada) {
+        imgAmpliada.src = this.src;
+        viewer.style.display = "flex";
+      }
+    };
   }
 
   const dificuldadeMarcada = linha.querySelector(".dificuldadeChk")?.checked || false;
