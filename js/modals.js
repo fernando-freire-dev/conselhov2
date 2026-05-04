@@ -665,6 +665,11 @@ window.abrirModalConselho = async function(index) {
     };
   }
 
+  //✅ NOVO: Novo Console log
+  console.log("alunoId:", alunoId);
+  console.log("cacheNotasPorAluno:", window.cacheNotasPorAluno);
+  console.log("cacheDisciplinas:", window.cacheDisciplinas);
+
   // ✅ NOVO: carrega notas do bimestre atual na coluna lateral
   const bimestre = conselhoAtual?.bimestre || "-";
   const bimestreEl = document.getElementById("modalNotasLateral_bimestre");
