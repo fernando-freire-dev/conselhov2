@@ -379,4 +379,25 @@
   </div>
 </div>
 
+<!-- ── Visualizador de foto ampliada (modal do conselho) ─── -->
+<div id="visualizadorFotoConselho" 
+  style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.85);
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    cursor:zoom-out;
+  "
+  onclick="this.style.display='none'">
+  <img id="fotoAmpliadaConselho"
+    style="
+      max-width:90vw;
+      max-height:90vh;
+      border-radius:12px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.6);
+    ">
+</div>
 <!-- ── Adicione novos modais globais abaixo desta linha ──────── -->
