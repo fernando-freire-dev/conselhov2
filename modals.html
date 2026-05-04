@@ -141,7 +141,7 @@
   </div>
 </div>
 
-<!-- ── Modal para listar as disciplinas vinculadas a uma turma, vai funcionar ao apertar o botão "Disciplinas" no menu turmas ──────── -->
+<!-- ── Modal para listar as disciplinas vinculadas a uma turma ──────── -->
 <div class="modal fade" id="modalDisciplinasTurma" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
@@ -187,14 +187,30 @@
   </div>
 </div>
 
-<!-- ── Modal do Conselho para substituir a tabela atual, assim teremos foco no aluno na hora do conselho ──────── -->
-
+<!-- ── Modal do Conselho individual do aluno ──────── -->
 <div class="modal fade" id="modalConselhoAluno" tabindex="-1">
   <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
 
+      <!-- ✅ ATUALIZADO: cabeçalho com foto do aluno -->
       <div class="modal-header">
-        <h5 id="modalAlunoTitulo" class="modal-title"></h5>
+        <div class="d-flex align-items-center gap-3">
+          <img
+            id="modalAlunoFoto"
+            src=""
+            alt="Foto do aluno"
+            style="
+              width: 56px;
+              height: 56px;
+              border-radius: 50%;
+              object-fit: cover;
+              border: 2px solid #dee2e6;
+              background: #e9ecef;
+            "
+            onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2256%22 height=%2256%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23dbeafe%22 rx=%2228%22/><circle cx=%2228%22 cy=%2221%22 r=%229%22 fill=%22%232563eb%22/><rect x=%2210%22 y=%2233%22 width=%2236%22 height=%2214%22 rx=%227%22 fill=%22%232563eb%22/></svg>'"
+          >
+          <h5 id="modalAlunoTitulo" class="modal-title mb-0"></h5>
+        </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
