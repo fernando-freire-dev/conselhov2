@@ -650,6 +650,12 @@ window.abrirModalConselho = async function(index) {
   const nome = linha.querySelector(".col-aluno")?.innerText || "";
   document.getElementById("modalAlunoTitulo").innerText = nome;
 
+  // ✅ NOVO: carrega foto do Cloudinary pelo RA (id do aluno)
+  const fotoEl = document.getElementById("modalAlunoFoto");
+  if (fotoEl) {
+    fotoEl.src = `https://res.cloudinary.com/dqc3eto6e/image/upload/${alunoId}.jpg`;
+  }
+
   const dificuldadeMarcada = linha.querySelector(".dificuldadeChk")?.checked || false;
   const dificuldadeTexto = linha.querySelector(".dificuldadeTxt")?.value || "";
 
